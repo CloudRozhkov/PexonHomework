@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <link type="text/css" href="{{ url_for('static', filename='css/styles.css')}}" rel="stylesheet" />
+    <title>Zertifikate</title>
+</head>
+
+<body>
+    <div class="header">
+        <div class="inner-header flex">
+            <h1>Hello Pexonian, trage hier deine Zertifizierungen ein!</h1>
+        </div>
+    </div>
+
+    <div class="header_form">
+        <form action="{{url_for('zert')}}" method="post" class="form">
+            <p><label>Name: </label><br><input type="text" name="name" value="" requied /><br>
+            <p><label>Zertifikat: </label><br><input type="text" name="zertifikat" value="" requied /><br>
+            <p><label>Datum des Erhalts (Monat/Jahr): </label><br><input type="text" name="date" value="" requied /><br><br>
+            <p><input type="submit" value="Speichern" />
+        </form>
+    </div>
+
+    <div class="down-header">
+        {% for d in zert -%}
+        <h3>{{d.name}} {{d.date}} {{d.zertifikat}}</h3>
+        {% endfor -%}
+    </div>
+</body>
+</html>
